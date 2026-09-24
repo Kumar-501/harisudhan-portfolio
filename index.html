@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Apply the saved theme before paint to avoid a flash of the wrong theme -->
+    <script>
+      (function () {
+        var DARK = {
+          emerald: 1, amber: 1, cyan: 1, violet: 1, rose: 1, blue: 1
+        };
+        var id = "emerald";
+        try {
+          var stored = localStorage.getItem("harisudhan-theme");
+          if (stored && (DARK[stored] || stored.indexOf("light-") === 0)) {
+            id = stored;
+          }
+        } catch (e) {}
+        var root = document.documentElement;
+        root.setAttribute("data-theme", id);
+        var isDark = !!DARK[id];
+        if (isDark) root.classList.add("dark");
+        root.style.colorScheme = isDark ? "dark" : "light";
+      })();
+    </script>
+
+    <!-- Primary SEO -->
+    <title>Harisudhan A G | ECE Student Portfolio</title>
+    <meta
+      name="description"
+      content="Harisudhan A G is a first-year Electronics and Communication Engineering student at KPR Institute of Engineering and Technology, with interests in Python programming, MySQL, electronics, data analysis, and practical technical projects."
+    />
+    <meta
+      name="keywords"
+      content="Harisudhan A G, Harisudhan, ECE student, Electronics and Communication Engineering, KPR Institute of Engineering and Technology, ECE portfolio, student portfolio, Python student, MySQL student, electronics projects, Bluetooth speaker project, engineering student portfolio, Coimbatore ECE student"
+    />
+    <meta name="author" content="Harisudhan A G" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://example.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Harisudhan A G" />
+    <meta
+      property="og:title"
+      content="Harisudhan A G | ECE Student Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="First-year Electronics and Communication Engineering student at KPR Institute of Engineering and Technology, with interests in Python programming, MySQL, electronics, data analysis, and practical technical projects."
+    />
+    <meta property="og:url" content="https://example.com/" />
+    <meta property="og:locale" content="en_IN" />
+    <!-- TODO: add an absolute og:image URL (1200x630) once the site is hosted, e.g.:
+    <meta property="og:image" content="https://example.com/og-image.jpg" /> -->
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Harisudhan A G | ECE Student Portfolio" />
+    <meta
+      name="twitter:description"
+      content="First-year ECE student at KPR Institute of Engineering and Technology — Python, MySQL, electronics, data analysis and practical technical projects."
+    />
+
+    <!-- Favicon (inline SVG) -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%230d9488'/%3E%3Ctext%20x='32'%20y='43'%20font-family='Arial,%20sans-serif'%20font-size='26'%20font-weight='bold'%20fill='white'%20text-anchor='middle'%3EHA%3C/text%3E%3C/svg%3E"
+    />
+    <meta name="theme-color" content="#0d9488" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Harisudhan A G",
+        "jobTitle": "Electronics and Communication Engineering Student",
+        "email": "26ec094@kpriet.ac.in",
+        "telephone": "+91 98439 65687",
+        "url": "https://example.com/",
+        "sameAs": ["https://linkedin.com/in/harisudhan-a-g"],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Coimbatore",
+          "addressRegion": "Tamil Nadu",
+          "postalCode": "641407",
+          "addressCountry": "IN"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "KPR Institute of Engineering and Technology",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Coimbatore",
+            "addressRegion": "Tamil Nadu",
+            "addressCountry": "IN"
+          }
+        },
+        "knowsAbout": [
+          "Python Programming",
+          "MySQL Database Management",
+          "Electronics",
+          "Data Analysis",
+          "Problem Solving"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

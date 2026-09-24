@@ -1,0 +1,673 @@
+@import "tailwindcss";
+
+/* -------------------------------------------------------
+   Dark mode: class based strategy (.dark on <html>)
+------------------------------------------------------- */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* =======================================================
+   THEME PALETTES
+   Each theme redefines the accent scale + surfaces.
+   `html[data-theme="x"]` wins over the :root defaults.
+======================================================= */
+
+:root {
+  /* Default = Emerald */
+  --accent-50: #ecfdf5;
+  --accent-100: #d1fae5;
+  --accent-200: #a7f3d0;
+  --accent-300: #6ee7b7;
+  --accent-400: #34d399;
+  --accent-500: #10b981;
+  --accent-600: #059669;
+  --accent-700: #047857;
+  --accent-800: #065f46;
+  --accent-900: #064e3b;
+  --accent-950: #022c22;
+
+  --surface-bg: #04120e;
+  --surface-1: #082018;
+  --surface-2: #0c2c22;
+  --surface-3: #123b2d;
+  --line-dark: #14503f;
+
+  --nav-bg: #04120ecc;
+  --glow: #10b98159;
+}
+
+html[data-theme="emerald"] {
+  --accent-50: #ecfdf5;
+  --accent-100: #d1fae5;
+  --accent-200: #a7f3d0;
+  --accent-300: #6ee7b7;
+  --accent-400: #34d399;
+  --accent-500: #10b981;
+  --accent-600: #059669;
+  --accent-700: #047857;
+  --accent-800: #065f46;
+  --accent-900: #064e3b;
+  --accent-950: #022c22;
+
+  --surface-bg: #04120e;
+  --surface-1: #082018;
+  --surface-2: #0c2c22;
+  --surface-3: #123b2d;
+  --line-dark: #14503f;
+  --nav-bg: #04120ecc;
+  --glow: #10b98159;
+}
+
+html[data-theme="amber"] {
+  --accent-50: #fffbeb;
+  --accent-100: #fef3c7;
+  --accent-200: #fde68a;
+  --accent-300: #fcd34d;
+  --accent-400: #fbbf24;
+  --accent-500: #f59e0b;
+  --accent-600: #d97706;
+  --accent-700: #b45309;
+  --accent-800: #92400e;
+  --accent-900: #78350f;
+  --accent-950: #451a03;
+
+  --surface-bg: #140a00;
+  --surface-1: #1e1206;
+  --surface-2: #2a1a0a;
+  --surface-3: #3a2410;
+  --line-dark: #4a2f10;
+  --nav-bg: #140a00cc;
+  --glow: #f59e0b59;
+}
+
+html[data-theme="cyan"] {
+  --accent-50: #ecfeff;
+  --accent-100: #cffafe;
+  --accent-200: #a5f3fc;
+  --accent-300: #67e8f9;
+  --accent-400: #22d3ee;
+  --accent-500: #06b6d4;
+  --accent-600: #0891b2;
+  --accent-700: #0e7490;
+  --accent-800: #155e75;
+  --accent-900: #164e63;
+  --accent-950: #083344;
+
+  --surface-bg: #04141b;
+  --surface-1: #072430;
+  --surface-2: #0a3140;
+  --surface-3: #0e4257;
+  --line-dark: #10566e;
+  --nav-bg: #04141bcc;
+  --glow: #06b6d459;
+}
+
+html[data-theme="violet"] {
+  --accent-50: #f5f3ff;
+  --accent-100: #ede9fe;
+  --accent-200: #ddd6fe;
+  --accent-300: #c4b5fd;
+  --accent-400: #a78bfa;
+  --accent-500: #8b5cf6;
+  --accent-600: #7c3aed;
+  --accent-700: #6d28d9;
+  --accent-800: #5b21b6;
+  --accent-900: #4c1d95;
+  --accent-950: #2e1065;
+
+  --surface-bg: #0f0720;
+  --surface-1: #18102e;
+  --surface-2: #221740;
+  --surface-3: #2e1f56;
+  --line-dark: #3f2a70;
+  --nav-bg: #0f0720cc;
+  --glow: #8b5cf659;
+}
+
+html[data-theme="rose"] {
+  --accent-50: #fff1f2;
+  --accent-100: #ffe4e6;
+  --accent-200: #fecdd3;
+  --accent-300: #fda4af;
+  --accent-400: #fb7185;
+  --accent-500: #f43f5e;
+  --accent-600: #e11d48;
+  --accent-700: #be123c;
+  --accent-800: #9f1239;
+  --accent-900: #881337;
+  --accent-950: #4c0519;
+
+  --surface-bg: #170610;
+  --surface-1: #230d1a;
+  --surface-2: #311226;
+  --surface-3: #431a33;
+  --line-dark: #5c2340;
+  --nav-bg: #170610cc;
+  --glow: #f43f5e59;
+}
+
+html[data-theme="blue"] {
+  --accent-50: #eff6ff;
+  --accent-100: #dbeafe;
+  --accent-200: #bfdbfe;
+  --accent-300: #93c5fd;
+  --accent-400: #60a5fa;
+  --accent-500: #3b82f6;
+  --accent-600: #2563eb;
+  --accent-700: #1d4ed8;
+  --accent-800: #1e40af;
+  --accent-900: #1e3a8a;
+  --accent-950: #172554;
+
+  --surface-bg: #050d1c;
+  --surface-1: #0a1628;
+  --surface-2: #102138;
+  --surface-3: #162d4d;
+  --line-dark: #1e3a6b;
+  --nav-bg: #050d1ccc;
+  --glow: #3b82f659;
+}
+
+html[data-theme="light-teal"] {
+  --accent-50: #f0fdfa;
+  --accent-100: #ccfbf1;
+  --accent-200: #99f6e4;
+  --accent-300: #5eead4;
+  --accent-400: #2dd4bf;
+  --accent-500: #14b8a6;
+  --accent-600: #0d9488;
+  --accent-700: #0f766e;
+  --accent-800: #115e59;
+  --accent-900: #134e4a;
+  --accent-950: #042f2e;
+
+  --surface-bg: #0b1526;
+  --surface-1: #131f38;
+  --surface-2: #1e2a44;
+  --surface-3: #33436b;
+  --line-dark: #334155;
+  --nav-bg: #0f172aeb;
+  --glow: #0d948859;
+}
+
+html[data-theme="light-slate"] {
+  --accent-50: #f8fafc;
+  --accent-100: #f1f5f9;
+  --accent-200: #e2e8f0;
+  --accent-300: #cbd5e1;
+  --accent-400: #94a3b8;
+  --accent-500: #64748b;
+  --accent-600: #475569;
+  --accent-700: #334155;
+  --accent-800: #1e293b;
+  --accent-900: #0f172a;
+  --accent-950: #020617;
+
+  --surface-bg: #0b1526;
+  --surface-1: #131f38;
+  --surface-2: #1e2a44;
+  --surface-3: #33436b;
+  --line-dark: #334155;
+  --nav-bg: #0f172aeb;
+  --glow: #47556959;
+}
+
+/* -------------------------------------------------------
+   Design tokens
+------------------------------------------------------- */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui,
+    sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Accent scale — driven by the active theme */
+  --color-brand-50: var(--accent-50);
+  --color-brand-100: var(--accent-100);
+  --color-brand-200: var(--accent-200);
+  --color-brand-300: var(--accent-300);
+  --color-brand-400: var(--accent-400);
+  --color-brand-500: var(--accent-500);
+  --color-brand-600: var(--accent-600);
+  --color-brand-700: var(--accent-700);
+  --color-brand-800: var(--accent-800);
+  --color-brand-900: var(--accent-900);
+  --color-brand-950: var(--accent-950);
+
+  /* Dark surfaces — driven by the active theme */
+  --color-navy-600: var(--surface-3);
+  --color-navy-700: var(--surface-3);
+  --color-navy-800: var(--surface-2);
+  --color-navy-900: var(--surface-1);
+  --color-navy-950: var(--surface-bg);
+
+  /* Dark hairlines — driven by the active theme */
+  --color-slate-600: var(--line-dark);
+  --color-slate-700: var(--line-dark);
+  --color-slate-800: var(--line-dark);
+
+  /* Text: dark charcoal */
+  --color-ink-900: #111827;
+  --color-ink-800: #1f2937;
+  --color-ink-700: #374151;
+  --color-ink-600: #4b5563;
+  --color-ink-500: #6b7280;
+
+  /* Card shadows */
+  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.06);
+  --shadow-card-hover: 0 18px 40px -18px var(--glow);
+}
+
+/* -------------------------------------------------------
+   Base
+------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white font-sans text-ink-600 antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  .dark body {
+    @apply bg-navy-950 text-slate-400;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-display font-bold tracking-tight text-ink-900 dark:text-white;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-white dark:ring-offset-navy-950;
+  }
+
+  ::selection {
+    @apply bg-brand-500/25 text-brand-900 dark:text-brand-100;
+  }
+
+  /* Themed scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--accent-500) 45%, transparent);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-500);
+  }
+}
+
+/* -------------------------------------------------------
+   Reusable component classes
+------------------------------------------------------- */
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-[1200px] px-5 sm:px-8;
+  }
+
+  .section {
+    @apply py-20 md:py-28;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-brand-600 dark:text-brand-400;
+  }
+
+  .h1 {
+    @apply font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl;
+  }
+
+  .h2 {
+    @apply font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl;
+  }
+
+  .h3 {
+    @apply font-display text-lg font-bold text-ink-900 dark:text-white;
+  }
+
+  .lead {
+    @apply text-base leading-relaxed text-ink-600 sm:text-lg dark:text-slate-400;
+  }
+
+  .card {
+    @apply rounded-2xl border border-slate-200 bg-white shadow-card
+      transition-all duration-300 dark:border-slate-700/70 dark:bg-navy-900;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-1 hover:border-brand-300 hover:shadow-card-hover
+      dark:hover:border-brand-500/60 dark:hover:bg-navy-800;
+  }
+
+  .btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl px-5 py-3
+      text-sm font-semibold transition-all duration-200 select-none;
+  }
+
+  .btn-primary {
+    @apply bg-brand-600 text-white shadow-lg shadow-brand-600/25 hover:-translate-y-0.5
+      hover:bg-brand-700 hover:shadow-brand-700/30 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply border border-slate-300 bg-white text-ink-900 hover:-translate-y-0.5 hover:border-brand-400
+      hover:text-brand-700 dark:border-slate-600 dark:bg-transparent dark:text-slate-200
+      dark:hover:border-brand-400 dark:hover:text-brand-300;
+  }
+
+  .btn-ghost {
+    @apply text-ink-700 hover:bg-brand-50 hover:text-brand-700 dark:text-slate-300
+      dark:hover:bg-white/5 dark:hover:text-brand-300;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3 py-1
+      text-xs font-medium text-ink-700 dark:border-slate-700 dark:bg-white/5 dark:text-slate-300;
+  }
+
+  .label {
+    @apply mb-1.5 block text-sm font-semibold text-ink-800 dark:text-slate-200;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-ink-900
+      transition placeholder:text-ink-500/70 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30
+      dark:border-slate-700 dark:bg-navy-950 dark:text-white dark:placeholder:text-slate-500;
+  }
+
+  .divider {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-slate-200 to-transparent dark:via-slate-700;
+  }
+
+  /* ---- Glass pill navigation (reference design) ---- */
+  .nav-wrapper {
+    @apply fixed top-0 left-0 z-50 flex w-full justify-center py-3;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nav-wrapper.hide {
+    transform: translateY(-130%);
+  }
+
+  .nav-glass {
+    @apply flex h-[62px] w-[92%] max-w-[1200px] items-center rounded-full px-4;
+    background: var(--nav-bg);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border: 1px solid color-mix(in srgb, var(--accent-400) 22%, transparent);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-item {
+    @apply cursor-pointer rounded-full px-3.5 py-2 text-sm font-medium whitespace-nowrap text-white/70
+      transition-all duration-300 hover:bg-white/10 hover:text-white;
+  }
+
+  .nav-item.active {
+    color: var(--accent-300);
+    background: color-mix(in srgb, var(--accent-500) 16%, transparent);
+  }
+
+  .icon-btn {
+    @apply flex h-[38px] w-[38px] cursor-pointer items-center justify-center rounded-full
+      border border-white/10 bg-white/5 text-white transition-all duration-300
+      hover:scale-105 hover:border-white/25 hover:bg-white/10;
+  }
+
+  .drop-menu {
+    @apply absolute right-0 top-[52px] z-[100] min-w-[190px] rounded-2xl border border-white/10 p-1.5;
+    background: var(--surface-1);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  }
+
+  .drop-btn {
+    @apply flex w-full cursor-pointer items-center gap-2.5 rounded-xl px-3 py-2 text-left
+      text-[13px] font-medium text-white/85 transition-colors duration-200 hover:bg-white/10;
+  }
+
+  .drop-btn.active {
+    background: var(--accent-600);
+    @apply text-white;
+  }
+}
+
+/* -------------------------------------------------------
+   Decorative backgrounds
+------------------------------------------------------- */
+@utility bg-grid {
+  background-image: linear-gradient(
+      to right,
+      color-mix(in srgb, var(--accent-500) 9%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--accent-500) 9%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 46px 46px;
+}
+
+@utility bg-dots {
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--accent-500) 20%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+/* -------------------------------------------------------
+   Custom cursor (desktop only)
+------------------------------------------------------- */
+.custom-cursor-dot {
+  pointer-events: none;
+  position: fixed;
+  top: -4px;
+  left: -4px;
+  z-index: 99999;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-400);
+  box-shadow: 0 0 8px var(--accent-400), 0 0 18px var(--glow);
+  transition: width 0.2s, height 0.2s, background 0.25s, box-shadow 0.25s;
+}
+
+.custom-cursor-ring {
+  pointer-events: none;
+  position: fixed;
+  top: -18px;
+  left: -18px;
+  z-index: 99998;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid color-mix(in srgb, var(--accent-400) 70%, transparent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent-400) 4%, transparent);
+  transition: width 0.25s, height 0.25s, border-color 0.25s, background 0.25s,
+    box-shadow 0.25s, top 0.25s, left 0.25s;
+}
+
+.custom-cursor-ring.cursor-hover {
+  top: -24px;
+  left: -24px;
+  width: 48px;
+  height: 48px;
+  border-color: var(--accent-400);
+  background: color-mix(in srgb, var(--accent-400) 12%, transparent);
+  box-shadow: 0 0 12px var(--accent-400), 0 0 30px var(--glow);
+}
+
+.custom-cursor-dot.cursor-dot-hover {
+  top: -3px;
+  left: -3px;
+  width: 6px;
+  height: 6px;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor-dot,
+  .custom-cursor-ring {
+    display: none;
+  }
+}
+
+/* -------------------------------------------------------
+   Animations
+------------------------------------------------------- */
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes circuit-dash {
+  to {
+    stroke-dashoffset: -400;
+  }
+}
+
+@keyframes node-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 16px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.animate-floaty {
+  animation: floaty 7s ease-in-out infinite;
+}
+
+.animate-floaty-slow {
+  animation: floaty 10s ease-in-out infinite;
+}
+
+.circuit-line {
+  stroke-dasharray: 5 7;
+  animation: circuit-dash 26s linear infinite;
+}
+
+.circuit-node {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: node-pulse 3.4s ease-in-out infinite;
+}
+
+.animate-toast-in {
+  animation: toast-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease both;
+}
+
+.animate-pop-in {
+  animation: pop-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* -------------------------------------------------------
+   Reduced motion
+------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .custom-cursor-dot,
+  .custom-cursor-ring {
+    display: none;
+  }
+}
